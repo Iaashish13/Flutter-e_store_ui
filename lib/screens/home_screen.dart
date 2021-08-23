@@ -1,9 +1,11 @@
+import 'package:e_store_ui/widgets/lower_banner.dart';
+import 'package:flutter/material.dart';
+
 import 'package:e_store_ui/constants.dart';
 import 'package:e_store_ui/models/product_model.dart';
 import 'package:e_store_ui/widgets/Item_card.dart';
 import 'package:e_store_ui/widgets/categories.dart';
 import 'package:e_store_ui/widgets/product_banner.dart';
-import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -170,6 +172,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     border: Border.all(
                       width: 0.0,
                       color: kSecondaryColor,
+                    ),
+                  ),
+                  child: LowerBanner(
+                    Product(
+                      description: "New",
+                      name: 'Wireless Gaming Mouse',
+                      imagePath: 'assets/images/wireless-mouse.png',
+                      price: 100,
                     ),
                   ),
                 ),

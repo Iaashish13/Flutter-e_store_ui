@@ -72,10 +72,11 @@ class ItemCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: kSecondaryColor,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(8),
-                      topRight: Radius.circular(8),
-                      bottomLeft: Radius.circular(8),
-                      bottomRight: Radius.circular(16)),
+                    topLeft: Radius.circular(8),
+                    topRight: Radius.circular(8),
+                    bottomLeft: Radius.circular(8),
+                    bottomRight: Radius.circular(16),
+                  ),
                 ),
                 child: IconButton(
                   onPressed: () {},
