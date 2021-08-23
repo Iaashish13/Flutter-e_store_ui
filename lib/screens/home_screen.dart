@@ -1,4 +1,8 @@
 import 'package:e_store_ui/constants.dart';
+import 'package:e_store_ui/models/product_model.dart';
+import 'package:e_store_ui/widgets/Item_card.dart';
+import 'package:e_store_ui/widgets/categories.dart';
+import 'package:e_store_ui/widgets/product_banner.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -56,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Stack(
@@ -66,6 +71,76 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Container(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24.0,
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        ProductBanner(
+                          Product(
+                            description: '',
+                            name: 'Beats Pro Headphone',
+                            price: 100,
+                            imagePath: 'assets/images/headphone1.png',
+                          ),
+                        ),
+                        SizedBox(
+                          height: 24.0,
+                        ),
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Text(
+                                'Our Products',
+                                style: TextStyle(
+                                  fontSize: 26.0,
+                                  fontWeight: FontWeight.w700,
+                                  color: kSecondaryColor,
+                                ),
+                              ),
+                              Spacer(),
+                              Container(
+                                height: 36.0,
+                                width: 36.0,
+                                decoration: BoxDecoration(
+                                  color: kMainColor,
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Icon(
+                                  Icons.format_list_bulleted_outlined,
+                                  size: 30.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16.0,
+                        ),
+                        Categories(),
+                        SizedBox(
+                          height: 36.0,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: products.length,
+                            itemBuilder: (context, index) => ItemCard(
+                              imagePath: products[index].imagePath,
+                              productName: products[index].name,
+                              price: products[index].price.toString(),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 36.0,
+                        ),
+                      ],
+                    ),
+                  ),
                   decoration: BoxDecoration(
                     color: kPrimaryColor,
                     borderRadius: BorderRadius.only(
@@ -78,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Container(
-            height: 200.0,
+            height: 250.0,
             child: Stack(
               children: [
                 Container(
