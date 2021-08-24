@@ -28,7 +28,7 @@ class ItemCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Hero(
-                  tag: 'estore-${product.name}',
+                  tag: "${product.name}",
                   child: Image.asset(
                     product.imagePath,
                     height: 160.0,

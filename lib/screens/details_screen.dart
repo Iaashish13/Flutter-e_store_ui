@@ -12,11 +12,6 @@ class DetailsScreen extends StatelessWidget {
   }) : super(key: key);
 
   @override
-//   _DetailsScreenState createState() => _DetailsScreenState();
-// }
-
-// class _DetailsScreenState extends State<DetailsScreen> {
-//   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -256,7 +251,7 @@ class DetailsScreen extends StatelessWidget {
               ),
               alignment: Alignment.topCenter,
               child: Hero(
-                tag: 'estore-${product.name}',
+                tag: "${product.name}",
                 child: Image.asset(
                   product.imagePath,
                   height: 330.0,
