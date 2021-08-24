@@ -1,6 +1,7 @@
 import 'package:e_store_ui/models/product_model.dart';
 import 'package:e_store_ui/screens/details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../constants.dart';
 
@@ -13,11 +14,12 @@ class LowerBanner extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailsScreen(product: products[5]),
-          ),
-        );
+            context,
+            PageTransition(
+                type: PageTransitionType.leftToRightWithFade,
+                child: DetailsScreen(
+                  product: products[5],
+                )));
       },
       child: Container(
         child: Column(

@@ -6,6 +6,7 @@ import 'package:e_store_ui/models/product_model.dart';
 import 'package:e_store_ui/widgets/Item_card.dart';
 import 'package:e_store_ui/widgets/categories.dart';
 import 'package:e_store_ui/widgets/product_banner.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -142,13 +143,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               product: products[index],
                               press: () {
                                 Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => DetailsScreen(
-                                      product: products[index],
-                                    ),
-                                  ),
-                                );
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType
+                                            .leftToRightWithFade,
+                                        child: DetailsScreen(
+                                          product: products[index],
+                                        )));
                               },
                             ),
                           ),

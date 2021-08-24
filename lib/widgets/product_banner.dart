@@ -2,6 +2,7 @@ import 'package:e_store_ui/constants.dart';
 import 'package:e_store_ui/models/product_model.dart';
 import 'package:e_store_ui/screens/details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ProductBanner extends StatelessWidget {
   final Product product;
@@ -11,11 +12,12 @@ class ProductBanner extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailsScreen(product: products[4]),
-          ),
-        );
+            context,
+            PageTransition(
+                type: PageTransitionType.leftToRightWithFade,
+                child: DetailsScreen(
+                  product: products[4],
+                )));
       },
       child: Container(
         height: 200.0,
