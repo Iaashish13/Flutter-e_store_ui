@@ -1,19 +1,21 @@
-import 'package:e_store_ui/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'package:e_store_ui/constants.dart';
+import 'package:e_store_ui/models/product_model.dart';
+
 class ItemCard extends StatelessWidget {
-  final imagePath;
-  final productName;
-  final price;
-  ItemCard(
-      {required this.imagePath,
-      required this.productName,
-      required this.price});
+  final Product product;
+  final VoidCallback press;
+  const ItemCard({
+    Key? key,
+    required this.product,
+    required this.press,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: press,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 16.0),
         decoration: BoxDecoration(
@@ -25,10 +27,13 @@ class ItemCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Image.asset(
-                  imagePath,
-                  height: 160.0,
-                  width: 170.0,
+                Hero(
+                  tag: 'estore-${product.name}',
+                  child: Image.asset(
+                    product.imagePath,
+                    height: 160.0,
+                    width: 170.0,
+                  ),
                 ),
                 SizedBox(
                   height: 24.0,
@@ -40,7 +45,7 @@ class ItemCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          productName,
+                          product.name,
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.black,
@@ -50,7 +55,7 @@ class ItemCard extends StatelessWidget {
                           height: 6.0,
                         ),
                         Text(
-                          price,
+                          "\$ ${product.price}",
                           style: TextStyle(
                               color: Colors.black45,
                               fontWeight: FontWeight.w600,

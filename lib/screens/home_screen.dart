@@ -1,6 +1,6 @@
+import 'package:e_store_ui/screens/details_screen.dart';
 import 'package:e_store_ui/widgets/lower_banner.dart';
 import 'package:flutter/material.dart';
-
 import 'package:e_store_ui/constants.dart';
 import 'package:e_store_ui/models/product_model.dart';
 import 'package:e_store_ui/widgets/Item_card.dart';
@@ -19,15 +19,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16.0),
-          child: Icon(Icons.grid_view_outlined),
+          child: Icon(
+            Icons.grid_view_outlined,
+            color: kSecondaryColor,
+            size: kIconSize,
+          ),
         ),
         elevation: 0,
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.search),
+            icon: Icon(
+              Icons.search,
+              color: kSecondaryColor,
+            ),
             iconSize: kIconSize,
           ),
           Stack(
@@ -82,9 +90,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ProductBanner(
                           Product(
                             description: '',
-                            name: 'Beats Pro Headphone',
-                            price: 100,
-                            imagePath: 'assets/images/headphone1.png',
+                            name: products[4].name,
+                            price: products[4].price,
+                            imagePath: products[4].imagePath,
                           ),
                         ),
                         SizedBox(
@@ -131,9 +139,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             scrollDirection: Axis.horizontal,
                             itemCount: products.length,
                             itemBuilder: (context, index) => ItemCard(
-                              imagePath: products[index].imagePath,
-                              productName: products[index].name,
-                              price: products[index].price.toString(),
+                              product: products[index],
+                              press: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailsScreen(
+                                      product: products[index],
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ),
@@ -177,9 +193,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: LowerBanner(
                     Product(
                       description: "New",
-                      name: 'Wireless Gaming Mouse',
-                      imagePath: 'assets/images/wireless-mouse.png',
-                      price: 100,
+                      name: products[5].name,
+                      imagePath: products[5].imagePath,
+                      price: products[5].price,
                     ),
                   ),
                 ),
